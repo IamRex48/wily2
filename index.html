@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para la mas linda y tierna persona en el mundo, para la persona que ilumina mis dias</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body, html {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            background-color: #050505;
+            font-family: 'Montserrat', sans-serif;
+            color: white;
+        }
+
+        .video-wapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+         .pixel-entry {
+            opacity: 0;
+            animation: pixelBurn 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+            will-change: transform, opacity, filter;
+        }
+
+        @keyframes pixelBurn {
+            0% {
+                opacity: 0;
+                transform: scale(1.05);
+                filter: brightness(5) blur(10px) contrast(2);
+            }
+            30% {
+                opacity: 1;
+                filter: brightness(2) blur(4px) contrast(1.5);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+                filter: brightness(1) blur(0) contrast(1);
+            }
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            filter: blur(2px) brightness(0.4); 
+            transform: scale(1.1);
+        }
+
+        /* Contenido Centralizado */
+        .container {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            z-index: 1;
+        }
+
+        h2 {
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        #contador {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem; /* Reducido un poco para que quepa más texto */
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+        }
+
+        .promise {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-style: italic;
+            max-width: 800px;
+            line-height: 1.2;
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+        }
+
+        /* Botones */
+        .btn-container {
+            display: flex;
+            gap: 15px;
+            width: 100%;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            min-width: 260px;
+            border: 2px solid white;
+            transition: 0.3s;
+        }
+
+        .btn-white {
+            background-color: white;
+            color: black;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: white;
+            cursor: default;
+        }
+
+        /* Footer */
+        footer {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 30px;
+            font-size: 0.6rem;
+            opacity: 0.6;
+        }
+
+        /* AJUSTES PARA MOBILE */
+        @media (max-width: 768px) {
+            #contador {
+                font-size: 2.2rem; /* Más pequeño para que entren todas las unidades */
+            }
+
+            .promise {
+                font-size: 1.3rem;
+                margin-bottom: 2rem;
+            }
+
+            .btn-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .btn {
+                min-width: 80%;
+            }
+
+            h2 {
+                letter-spacing: 2px;
+                font-size: 0.7rem;
+            }
+
+            footer {
+                flex-direction: column;
+                align-items: center;
+                gap: 5px;
+                bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="video-wrapper">
+        <video autoplay muted loop playsinline id="bgVideo">
+            <source src="totoro.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="container pixel-entry">
+        <h2>Tiempo desde que conocí a la mejor persona del mundo:</h2>
+        
+        <div id="contador">Cargando...</div>
+        
+        <p class="promise">si conozco el amor, es gracias a ti..</p>
+
+        <div class="btn-container">
+            <a href="javascript:void(0)" class="btn btn-outline">Bloqueado (sección para mí)</a>
+        </div>
+
+    </div>
+
+    <footer>
+        <div>Para la mas tierna minion</div>
+        <div style="font-weight: bold;"><3</div>
+    </footer>
+
+    <script>
+        function updateCounter() {
+            const startDate = new Date('2025-12-16T20:10:00');
+            const now = new Date();
+            
+            let years = now.getFullYear() - startDate.getFullYear();
+            let months = now.getMonth() - startDate.getMonth();
+            let days = now.getDate() - startDate.getDate();
+            let hours = now.getHours() - startDate.getHours();
+            let minutes = now.getMinutes() - startDate.getMinutes();
+            let seconds = now.getSeconds() - startDate.getSeconds();
+
+            // <a href="/lista.html" class="btn btn-white">Lista de cosas en común</a>
+            if (seconds < 0) { seconds += 60; minutes--; }
+            if (minutes < 0) { minutes += 60; hours--; }
+            if (hours < 0) { hours += 24; days--; }
+            if (days < 0) {
+                const lastMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+                days += lastMonth.getDate();
+                months--;
+            }
+            if (months < 0) { months += 12; years--; }
+
+            // Cálculo de semanas a partir de los días restantes
+            let weeks = Math.floor(days / 7);
+            days = days % 7;
+
+            let result = [];
+            
+            if (years > 0) result.push(years + (years === 1 ? " año" : " años"));
+            if (months > 0) result.push(months + (months === 1 ? " mes" : " meses"));
+            if (weeks > 0) result.push(weeks + (weeks === 1 ? " semana" : " semanas"));
+            if (days > 0) result.push(days + (days === 1 ? " día" : " días"));
+            if (hours > 0) result.push(hours + (hours === 1 ? " hora" : " horas"));
+            if (minutes > 0) result.push(minutes + (minutes === 1 ? " min" : " mins"));
+            if (seconds > 0) result.push(seconds + " seg");
+
+            // Si el arreglo está vacío (es justo el momento exacto)
+            const text = result.length > 0 ? result.join(", ") : "0 seg";
+            document.getElementById('contador').innerText = text;
+        }
+
+        // Actualizar cada segundo para ver los cambios en tiempo real
+        setInterval(updateCounter, 1000);
+        updateCounter();
+
+        window.addEventListener('load', () => {
+            const video = document.getElementById('bgVideo');
+            if(video) {
+                video.play().catch(error => console.log("Auto-play prevenido."));
+            }
+        });
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
